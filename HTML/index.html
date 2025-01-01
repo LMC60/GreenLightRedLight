@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu Green Light Red Light</title>
+    <style>
+        body {background-color: aqua;}
+        button {
+			background-color: #3c3f47;
+			border: none;
+			color: white;
+			padding: 15px 30px;
+			/* modification */
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 24px;
+			/* modification */
+			border-radius: 20px;
+			transition: all 0.75s ease-in-out;
+			margin: 10px;
+		}
+
+    </style>
+</head>
+<body>
+    <button class="button" id="fullscreen-button">Zoomer dans le jeu</button>
+
+
+<!-- iDev.Games Responsive Embed Code for Green light Red light for friend -->
+<div style="position: relative;height: 0;overflow: hidden;padding-bottom: 56.25%;">
+    <iframe id="my-iframe" src="https://idev.games/embed/green-light-red-light-for-friend" scrolling="no" seamless="seamless" frameBorder="0" style="position: absolute;top:0;left: 0;width: 50%;height: 50%;">Browser not compatible.</iframe>
+</div>
+
+
+
+<script>
+    function toggleFullScreen() {
+        var doc = window.document;
+        var docEl = doc.documentElement;
+
+        var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+        var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+        if (!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+            requestFullScreen.call(docEl);
+        } else {
+            cancelFullScreen.call(doc);
+        }
+    }
+
+    document.addEventListener("fullscreenchange", function () {
+        if (!document.fullscreenElement) {
+            alert("Vous avez quitté le mode plein écran !");
+        }
+    });
+</script>
+
+
+<script>
+// Récupération de l'élément iframe et du bouton plein écran
+var iframe = document.getElementById("my-iframe");
+var button = document.getElementById("fullscreen-button");
+
+// Fonction pour mettre l'iframe en plein écran
+function enterFullscreen() {
+    if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+    } else if (iframe.webkitRequestFullscreen) { /* Safari */
+        iframe.webkitRequestFullscreen();
+    } else if (iframe.msRequestFullscreen) { /* IE11 */
+        iframe.msRequestFullscreen();
+    }
+}
+
+// Ajout d'un écouteur d'événement sur le bouton plein écran
+button.addEventListener("click", enterFullscreen);
+</script>
+ 
+
+
+</body>
+</html>
